@@ -174,9 +174,22 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
-function getReviewByRating(/* code here */) {
-  /* code here */
+function getReviewByRating(arr, rating) {
+  let reviewsArray = [];
+  for (let item in arr) {
+    if (arr[item].rating === rating || (arr[item].rating < (rating + 1) && arr[item].rating > rating)) {
+      reviewsArray.push(arr[item]);
+    }
+  }
+  if (reviewsArray.length === 0) {
+    return "No matching rating currently exists";
+  } else {
+    return reviewsArray;
+  }
+
 }
+
+console.log(getReviewByRating(reviews, 3));
 
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
@@ -192,14 +205,24 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-  /* code here */
+function getLongReviews(arr) {
+  let reviewsWithMoreThan15Words = [];
+  for (let item in arr) {
+    let thisItemsFeedback = arr[item].feedback;
+    let feedbacklength = thisItemsFeedback.split(" ").length;
+    if (feedbacklength >= 15) {
+      reviewsWithMoreThan15Words.push(arr[item]);
+    }
+  }
+  return reviewsWithMoreThan15Words;
 }
+
+console.log(getLongReviews(reviews));
 
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
-
+ 
 Use the carMaker function below to do the following:
   1. Receive a value representing the odometer (how many miles it's been driven) and use that when creating the object
   2. Create a drive method inside the object that increases the odometer value
@@ -208,7 +231,7 @@ Use the carMaker function below to do the following:
      a. The drive method which, when called, takes a distance value as its parameter
      b. The drive method should also cause the odometer value in the object to be increased by the distance
      c. Then the drive method should return the updated value of the odometer
-
+ 
   For example: Let's say we created the object in the variable car1 with an odometer value of 10.
   Then we called car1.drive(100)
   It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
