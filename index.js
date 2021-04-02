@@ -177,7 +177,7 @@ Use the getReviewsByRating function below to do the following:
 function getReviewByRating(arr, rating) {
   let reviewsArray = [];
   for (let item in arr) {
-    if (arr[item].rating === rating || (arr[item].rating < (rating + 1) && arr[item].rating > rating)) {
+    if (Math.floor(arr[item].rating) === rating) {
       reviewsArray.push(arr[item]);
     }
   }
@@ -237,11 +237,18 @@ Use the carMaker function below to do the following:
   It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
 */
 
+function carMaker(miles) {
 
-function carMaker(/* code here */) {
-  /* code here */
-
+  return {
+    drive: function (distance) {
+      //miles + distance
+      miles += distance;
+      return miles;
+    }
+  }
 }
+//const car1 = carMaker(10);
+console.log(carMaker(15).drive(115));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
